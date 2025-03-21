@@ -1,0 +1,39 @@
+{
+  "name": "telemedicina",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open:homologacao": "cross-env CYPRESS_ENV=homologacao cypress open --env configFile=homologacao",
+    "cypress:run:homologacao": "cross-env CYPRESS_ENV=homologacao cypress run --env configFile=homologacao",
+    "cypress:open:staging": "cross-env CYPRESS_ENV=staging cypress open --env configFile=staging",
+    "cypress:run:staging": "cross-env CYPRESS_ENV=staging cypress run --env configFile=staging",
+    "cypress:open:producao": "cross-env CYPRESS_ENV=producao cypress open --env configFile=producao",
+    "cypress:run:producao": "cross-env CYPRESS_ENV=producao cypress run --env configFile=producao"
+  },
+  "cypress": {
+    "env": {
+      "homologacao": {
+        "baseUrl": "https://amei-homolog.amorsaude.com.br/auth/login"
+      },
+      "staging": {
+        "baseUrl": "https://amei-staging.amorsaude.com.br/auth/login"
+      },
+      "producao": {
+        "baseUrl": "https://amei.amorsaude.com.br/auth/login"
+      }
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+      "cypress": "^14.1.0",
+      "cypress-xpath": "^2.0.1"
+    }
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "cypress": "^14.2.0",
+    "cypress-xpath": "^2.0.1"
+  }
+}
