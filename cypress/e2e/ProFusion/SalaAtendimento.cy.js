@@ -2,6 +2,7 @@
 /// <reference types= "cypress" />
 
 describe('Profusion - Profissional Saude Telemed', () => {
+    //
     beforeEach(() => {
         cy.visit('/')
     })
