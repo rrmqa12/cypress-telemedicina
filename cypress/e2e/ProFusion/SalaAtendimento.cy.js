@@ -172,7 +172,7 @@ describe('Profusion - Profissional Saude Telemed', () => {
         cy.get('[data-placeholder="Status"]').click()
         cy.contains('span', 'Em atendimento').should('be.visible')
     })
-    
+
     it('Validar campo Status - Atendimento inconclusivo', () => {
         cy.get('#E-mail').type('prof.teste.suporte@gmail.com')
         cy.get('#Senha').type('Profissional@2024')
@@ -410,7 +410,7 @@ describe('Profusion - Profissional Saude Telemed', () => {
         cy.contains('div', ' Items per page: ').should('be.visible')
     })
 
-    it.skip('Validar Seletor de tamanho da página do paginador', () => {
+    it('Validar Seletor de tamanho da página do paginador', () => {
         cy.get('#E-mail').type('prof.teste.suporte@gmail.com')
         cy.get('#Senha').type('Profissional@2024')
         cy.get('#login').click()
@@ -424,11 +424,11 @@ describe('Profusion - Profissional Saude Telemed', () => {
 
         seletor.forEach((numero) => {
             cy.contains('span', numero).should('be.visible')
-                cy.log(numero)
+            cy.log(numero)
         })
     })
 
-   /* it.skip('Validar Paginação', () => {
+    it('Validar Paginação', () => {
         cy.get('#E-mail').type('prof.teste.suporte@gmail.com')
         cy.get('#Senha').type('Profissional@2024')
         cy.get('#login').click()
@@ -436,24 +436,13 @@ describe('Profusion - Profissional Saude Telemed', () => {
         cy.get('#EntrarUnidade').click()
         cy.get('#waiting-room').click()
         cy.contains('span', 'Atendimento médico').click()
-
-        let paginacao = [];
-        for (let i = 1; i <= 1000; i++) {
-            paginacao.push(i);
-        }
-
-        let totalDePaginas = Vetor.length;
-        let paginaAtual = 1;
-
-        let inicio = (paginaAtual - 1) * 10 + 1;
-        let fim = Math.min(paginaAtual * 10, totalDePaginas);
-                
-        cy.contains('div', `${inicio} – ${fim} of ${totalDePaginas}`);      
-    })*/
+        cy.wait(2000)
+        const paginacao = ' 1 –';
+        cy.contains('div', paginacao).should('be.visible')
+    })
 })
 
-
-describe('Profusion - Sala de Atendimento Administrador', () => {
+describe('Profusion - Visão Admin', () => {
     beforeEach(() => {
         cy.visit('/')
     })
@@ -543,7 +532,6 @@ describe('Profusion - Sala de Atendimento Administrador', () => {
         const diaAtual = String(dia.getDate()).padStart(2, '0'); // Garante que o dia tenha dois dígitos
 
         const dataFormatada = `${diaAtual}/${mes}/${ano}`;
-
         cy.get('input[id="data_espera"]').should('have.value', dataFormatada)
     })
 
@@ -582,7 +570,6 @@ describe('Profusion - Sala de Atendimento Administrador', () => {
             cy.log(profissionais)
         })
     })
-
 
     it('Validar campo Status - Todos', () => {
         cy.get('#E-mail').type('roger.mazzali@amorsaude.com')
@@ -824,7 +811,7 @@ describe('Profusion - Sala de Atendimento Administrador', () => {
         cy.contains('span', 'Atendimento médico').click()
         cy.get('table[class="table"]').contains('th', 'Espera').should('be.visible')
     })
-    
+
     it('Validar coluna Status', () => {
         cy.get('#E-mail').type('roger.mazzali@amorsaude.com')
         cy.get('#Senha').type('Rrm@amor202')
@@ -844,7 +831,7 @@ describe('Profusion - Sala de Atendimento Administrador', () => {
         cy.get('#EntrarUnidade').click()
         cy.get('#waiting-room').click()
         cy.contains('span', 'Atendimento médico').click()
-        cy.get('table[class="table"]').contains('th', 'Ação').should('be.visible')
+        cy.get('table[class="table"]').contains('th', 'Links').should('be.visible')
     })
 
     it('Validar coluna Histórico', () => {
@@ -855,7 +842,7 @@ describe('Profusion - Sala de Atendimento Administrador', () => {
         cy.get('#EntrarUnidade').click()
         cy.get('#waiting-room').click()
         cy.contains('span', 'Atendimento médico').click()
-        cy.get('table[class="table"]').contains('th', 'Ação').should('be.visible')
+        cy.get('table[class="table"]').contains('th', 'Histórico').should('be.visible')
     })
 
     it('Validar item Paginação', () => {
@@ -883,12 +870,11 @@ describe('Profusion - Sala de Atendimento Administrador', () => {
 
         seletor.forEach((numero) => {
             cy.contains('span', numero).should('be.visible')
-                cy.log(numero)
+            cy.log(numero)
         })
     })
 
-
-     /*it('Validar Paginação', () => {
+    it('Validar Paginação', () => {
         cy.get('#E-mail').type('roger.mazzali@amorsaude.com')
         cy.get('#Senha').type('Rrm@amor202')
         cy.get('#login').click()
@@ -897,18 +883,9 @@ describe('Profusion - Sala de Atendimento Administrador', () => {
         cy.get('#waiting-room').click()
         cy.contains('span', 'Atendimento médico').click()
 
-        let paginacao = [];
-        for (let i = 1; i <= 1000; i++) {
-            paginacao.push(i);
-        }
-
-        let totalDePaginas = Vetor.length;
-        let paginaAtual = 1;
-
-        let inicio = (paginaAtual - 1) * 10 + 1;
-        let fim = Math.min(paginaAtual * 10, totalDePaginas);
-                
-        cy.contains('div', `${inicio} – ${fim} of ${totalDePaginas}`);      
-    })*/
-
+        const paginacao = ' 1 –';
+        cy.contains('div', paginacao).should('be.visible')
+    })
 })
+
+// verificar os status após os atendimentos do profissional

@@ -647,6 +647,7 @@ describe('Validando Regra dos 3 Reagendamentos', () => {
     beforeEach(() => {
         cy.visit('/')
     })
+    
     it('Agendamento Parceria Particular', () => {
         cy.get('#E-mail')
             .type('roger.mazzali@amorsaude.com')
